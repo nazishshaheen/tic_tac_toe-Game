@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="ticTacToe.css">
+    <script src="https://kit.fontawesome.com/3fef92542b.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="msg-container hide">
         <p class="msg">Winner</p>
         <button class="new-button">New Game</button>
     </div>
-    <h1>Tic Tac Toe</h1>
+    <h1 class="heading">Tic Tac Toe</h1>
     <div class="game-container">
         <div class="game">
             <button class="box"></button>
@@ -26,8 +29,21 @@
         </div>
     </div>
     <div class="reset-container">
-        <button class="reset-button">Reset Game</button>
+        <div class="outer-container">
+            <div class="outer outer1">
+                <div class="player1 player"><i class="fa-solid fa-user"></i></div>
+            </div>
+            <p><span id="player1">Player 1</span> : <span id="p1-score"></span></p>
+        </div>
+        <button class="reset-button">Reset</button>
+        <div class="outer-container">
+            <div class="outer outer2">
+                <div class="player2 player"><i class="fa-solid fa-user"></i></div>
+            </div>
+            <p ><span id="player2">Player 2</span> : <span id="p2-score"></span></p>
+        </div>
     </div>
-    <script src="ticTacToe.js"></script>
+    <script src="ticTacToe.js" id="script"></script>
 </body>
+
 </html>

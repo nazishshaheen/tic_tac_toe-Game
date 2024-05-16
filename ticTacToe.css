@@ -1,19 +1,27 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+body {
     background-color: rgb(50, 217, 161);
     text-align: center;
+    --disp1: none;
+    --disp2: none;
+
 }
-.game-container{
+.heading{
+    font-size: 45px;
+    margin-top: 20px;
+}
+.game-container {
     height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.game{
+
+.game {
     height: 60vmin;
     width: 60vmin;
     display: flex;
@@ -22,18 +30,106 @@ body{
     align-items: center;
     gap: 1.5vmin;
 }
-.box{
+
+.box {
     height: 18vmin;
     width: 18vmin;
     border-radius: 10px;
     border: none;
     background-color: rgb(210, 227, 241);
     color: black;
-    box-shadow: 0 0 16px rgba(0,0,0,0.3);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
     font-size: 40px;
     cursor: pointer;
 }
-.reset-button{
+
+.reset-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 33%;
+    margin: auto;
+}
+
+.outer {
+    height: 70px;
+    width: 70px;
+    padding: 4px;
+    background-color: rgb(242, 242, 144);
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.player {
+    font-size: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(50, 217, 161);
+    position: relative;
+    z-index: 99;
+}
+.outer1::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    height: 80px;
+    width: 40px;
+    background-color: green;
+    animation: move 0.5s linear infinite;
+    display: var(--disp1);
+
+}
+.outer2::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    height: 80px;
+    width: 40px;
+    background-color: green;
+    animation: move 0.5s linear infinite;
+    display: var(--disp2);
+}
+
+@keyframes move {
+    100%{
+        transform: translate(-50%,-50%) rotate(225deg);
+    }
+}
+.player1 {
+    color: rgb(158, 8, 8);
+}
+#player1{
+    font-size: 22px;
+}
+.outer-container p span{
+    font-size: 20px;
+}
+.reset-button {
+    height: 50px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 22px;
+    background-color: rgb(56, 54, 54);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.reset-button:hover{
+    font-size: 26px;
+}
+.player2 {
+    color: blue;
+}
+#player2{
+    font-size: 22px;
+}
+.new-button {
     padding: 10px;
     font-size: 20px;
     background-color: rgb(56, 54, 54);
@@ -41,21 +137,18 @@ body{
     border-radius: 10px;
     cursor: pointer;
 }
-.new-button{
-    padding: 10px;
-    font-size: 20px;
-    background-color: rgb(56, 54, 54);
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
+.new-button:hover{
+    font-size: 26px;
 }
-.msg-container{
+.msg-container {
     height: 80%;
 }
-.msg{
+
+.msg {
     color: yellow;
     font-size: 35px;
 }
-.hide{
+
+.hide {
     display: none;
 }

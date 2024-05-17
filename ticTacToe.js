@@ -9,6 +9,7 @@ let msg = document.querySelector('.msg');
 let outer1 = document.querySelector('.outer1');
 let outer2 = document.querySelector('.outer2');
 
+
 // player O
 let turnO = true;
 outer1.style.setProperty("--disp1", 'block');
@@ -28,6 +29,7 @@ let winningPattern = [
 
 
 class Player {
+    static lastWinner = null;
     _score = 0;
     constructor(name) {
         this.fname = name.split(' ')[0][0].toUpperCase() + name.split(' ')[0].substr(1);
@@ -48,7 +50,7 @@ let player1 = null;
 let player2 = null;
 
 document.getElementById('script').addEventListener('load', () => {
-    if (confirm('Do you want to Set Player Name?\nClick OK else Cancel for Default')) {
+    if (confirm('Do you want to Set Player Name?\nclick Cancel for Default Name')) {
         playerStarter(false);
     } else {
         playerStarter(true);
@@ -65,13 +67,13 @@ function playerStarter(defName) {
             player1 = new Player(name1);
             player2 = new Player(name2);
         } else {
-            if (confirm('Do you want to Set Player Name?\nClick OK else Cancel for Default')) {
+            if (confirm('Do you want to Set Player Name?\nclick Cancel for Default Name')) {
                 playerStarter(false);
             } else {
                 playerStarter(true);
             }
         }
-    }else{
+    } else {
         player1 = new Player('player_A');
         player2 = new Player('Player_B')
     }
@@ -137,7 +139,7 @@ function showWinner(winnerObj) {
     disabledButtons();
     heading.style.display = 'none';
     resetContainer.style.display = 'none';
-    mobileResetBtn.style.display = 'none';
+    mobileResetBtn.classList.remove('disp-responsive');
     newGameBtn.style.marginTop = '30px';
     outer1.style.setProperty("--disp1", 'none');
     outer2.style.setProperty("--disp2", 'none');
@@ -153,7 +155,48 @@ function checkWinner() {
 
         if (pos1Value != '' && pos2Value != '' && pos3Value != '') {
             if (pos1Value === pos2Value && pos2Value === pos3Value) {
-                showWinner(pos1Value == 'O' ? player1 : player2);
+                if (!Player.lastWinner) {
+                    let winner;
+                    if (pos1Value == 'O') {
+                        winner = 'player1';
+                        showWinner(player1);
+                    } else {
+                        winner = 'player2';
+                        showWinner(player2);
+                        outer1.style.setProperty("--disp1", 'none');
+                        outer2.style.setProperty("--disp2", 'block');
+                    }
+                    Player.lastWinner = winner;
+                } else if (Player.lastWinner === "player1") {
+                    let winner;
+                    if (pos1Value == 'O') {
+                        winner = 'player1';
+                        showWinner(player1);
+                        outer1.style.setProperty("--disp1", 'block');
+                        outer2.style.setProperty("--disp2", 'none');
+                    } else {
+                        winner = 'player2';
+                        showWinner(player2);
+                        outer2.style.setProperty("--disp2", 'block');
+                        outer1.style.setProperty("--disp1", 'none');
+                    }
+                    Player.lastWinner = winner;
+                } else if (Player.lastWinner === 'player2') {
+                    let winner;
+                    if (pos1Value == 'O') {
+                        winner = 'player2';
+                        showWinner(player2);
+                        outer2.style.setProperty("--disp2", 'block');
+                        outer1.style.setProperty("--disp1", 'none');
+                    } else {
+                        winner = 'player1';
+                        showWinner(player1);
+                        outer2.style.setProperty("--disp2", 'none');
+                        outer1.style.setProperty("--disp1", 'block');
+                    }
+                    Player.lastWinner = winner;
+                }
+
                 return true;
             }
         }
@@ -168,9 +211,9 @@ function resetGame() {
     msgContainer.classList.add('hide');
     heading.style.display = 'block';
     resetContainer.style.display = 'flex';
-    mobileResetBtn.style.display = 'block';
-    outer1.style.setProperty("--disp1", 'block');
-    outer2.style.setProperty("--disp2", 'none');
+    mobileResetBtn.classList.add('disp-responsive');
+    // outer1.style.setProperty("--disp1", 'block');
+    // outer2.style.setProperty("--disp2", 'none');
 }
 
 function showScore() {

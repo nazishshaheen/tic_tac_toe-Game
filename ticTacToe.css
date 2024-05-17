@@ -178,20 +178,23 @@ body {
 .hide {
     display: none;
 }
-/* #trophy1,#trophy2{
+
+.my-fa-trophy{
+    display: none; 
     color: goldenrod;
     font-size: 20px;
     width: 30px;
     height: 30px;
-    visibility: hidden;
     background-color: whitesmoke;
     padding: 6px 2px;
+    margin-right: 5px;
     border-radius: 50%;
     box-shadow: 0px 0px 4px rgb(79, 79, 79);
 }
 .disp-ib{
-    visibility: visible;
-} */
+    display: inline-block;
+}
+
 /* media query */
 @media screen and (max-width:450px) {
 

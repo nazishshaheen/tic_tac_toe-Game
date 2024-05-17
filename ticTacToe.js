@@ -68,6 +68,9 @@ function playerStarter(defName) {
             alert('Please Enter Player Name \nCarefully !');
             playerStarter(false);
         }
+    }else{
+        player1 = new Player('player_A');
+        player2 = new Player('Player_B')
     }
     document.getElementById('player1').innerText = player1.fname;
     document.getElementById('player2').innerText = player2.fname;

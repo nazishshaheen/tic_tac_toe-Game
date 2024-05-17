@@ -152,3 +152,19 @@ body {
 .hide {
     display: none;
 }
+
+ /* media query */
+ @media screen and (max-width:450px){
+    
+    .game-container{
+        height: 60%;
+    }
+    .game{
+        width: 80%;
+        gap: 8px;
+    }
+    .box{
+        height: 30%;
+        width: 30%;
+    }
+ }

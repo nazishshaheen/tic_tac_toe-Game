@@ -2,6 +2,7 @@ let heading = document.querySelector('.heading');
 let boxes = document.querySelectorAll('.box');
 let resetContainer = document.querySelector('.reset-container');
 let resetBtn = document.querySelector('.reset-button');
+let mobileResetBtn = document.getElementById('mobile-reset-btn');
 let newGameBtn = document.querySelector('.new-button');
 let msgContainer = document.querySelector('.msg-container');
 let msg = document.querySelector('.msg');
@@ -27,7 +28,8 @@ let winningPattern = [
 class Player {
     _score = 0;
     constructor(name) {
-        this.name = name;
+        this.fname = name.split(' ')[0];
+        this.lname = name.split(' ')[1];
     }
 
     setScore = function () {
@@ -55,8 +57,8 @@ function playerStarter() {
             playerStarter();
         }
     }
-    document.getElementById('player1').innerText = player1.name;
-    document.getElementById('player2').innerText = player2.name;
+    document.getElementById('player1').innerText = player1.fname[0].toUpperCase()+player1.fname.substr(1);
+    document.getElementById('player2').innerText = player2.fname[0].toUpperCase()+player2.fname.substr(1);
     showScore();
 }
 
@@ -99,12 +101,13 @@ function enableButtons() {
 function showWinner(winnerObj) {
     winnerObj.setScore();
     showScore();
-    msg.innerText = `Congratulation, Winner is ${winnerObj.name}`;
+    msg.innerText = `Congratulation, Winner is ${winnerObj.fname + " "+winnerObj.lname}`;
     msg.style.marginTop = '30px';
     msgContainer.classList.remove('hide');
     disabledButtons();
     heading.style.display = 'none';
     resetContainer.style.display = 'none';
+    mobileResetBtn.style.display = 'none';
     newGameBtn.style.marginTop = '30px';
     outer1.style.setProperty("--disp1", 'none');
     outer2.style.setProperty("--disp2", 'none');
@@ -134,6 +137,7 @@ function resetGame() {
     msgContainer.classList.add('hide');
     heading.style.display = 'block';
     resetContainer.style.display = 'flex';
+    mobileResetBtn.style.display = 'block';
     outer1.style.setProperty("--disp1", 'block');
     outer2.style.setProperty("--disp2", 'none');
 }
@@ -146,4 +150,5 @@ function showScore() {
 // add event listener on newGame button
 newGameBtn.addEventListener('click', resetGame);
 resetBtn.addEventListener('click', resetGame);
+mobileResetBtn.addEventListener('click',resetGame);
 

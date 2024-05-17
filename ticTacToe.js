@@ -8,7 +8,8 @@ let msgContainer = document.querySelector('.msg-container');
 let msg = document.querySelector('.msg');
 let outer1 = document.querySelector('.outer1');
 let outer2 = document.querySelector('.outer2');
-
+let trophy1 = document.getElementById('trophy1');
+let trophy2 = document.getElementById('trophy2');
 
 // player O
 let turnO = true;
@@ -158,9 +159,12 @@ function checkWinner() {
                 if (!Player.lastWinner) {
                     let winner;
                     if (pos1Value == 'O') {
+                        trophy1.classList.add('disp-ib');
                         winner = 'player1';
                         showWinner(player1);
                     } else {
+                        trophy1.classList.remove('disp-ib');
+                        trophy2.classList.add('disp-ib');
                         winner = 'player2';
                         showWinner(player2);
                         outer1.style.setProperty("--disp1", 'none');
@@ -170,11 +174,15 @@ function checkWinner() {
                 } else if (Player.lastWinner === "player1") {
                     let winner;
                     if (pos1Value == 'O') {
+                        trophy2.classList.remove('disp-ib');
+                        trophy1.classList.add('disp-ib');
                         winner = 'player1';
                         showWinner(player1);
                         outer1.style.setProperty("--disp1", 'block');
                         outer2.style.setProperty("--disp2", 'none');
                     } else {
+                        trophy1.classList.remove('disp-ib');
+                        trophy2.classList.add('disp-ib');
                         winner = 'player2';
                         showWinner(player2);
                         outer2.style.setProperty("--disp2", 'block');
@@ -184,11 +192,15 @@ function checkWinner() {
                 } else if (Player.lastWinner === 'player2') {
                     let winner;
                     if (pos1Value == 'O') {
+                        trophy1.classList.remove('disp-ib');
+                        trophy2.classList.add('disp-ib');
                         winner = 'player2';
                         showWinner(player2);
                         outer2.style.setProperty("--disp2", 'block');
                         outer1.style.setProperty("--disp1", 'none');
                     } else {
+                        trophy2.classList.remove('disp-ib');
+                        trophy1.classList.add('disp-ib');
                         winner = 'player1';
                         showWinner(player1);
                         outer2.style.setProperty("--disp2", 'none');

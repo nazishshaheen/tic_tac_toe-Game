@@ -233,8 +233,15 @@ body {
         display: block;
     }
     .my-fa-trophy{
-        width: 25px;
-        height: 25px;
-        font-size: 14px;
+        width: 22px;
+        height: 22px;
+        font-size: 12px !important;
     }
+    #player1,#player2{
+        font-size: 16px;
+    }
+    .outer-container p span{
+        font-size: 16px;
+    }
+    
 }

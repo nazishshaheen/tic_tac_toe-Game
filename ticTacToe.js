@@ -80,17 +80,19 @@ boxes.forEach((box) => {
         }
         box.disabled = true;
 
-        checkWinner();
-        let draw;
-        setTimeout(() => {
-            draw = isDraw();
-    
-            if (draw) {
-                if (confirm('The Game is Draw!\nStart new Game?')) {
-                    resetGame();
+        if (!checkWinner()) {
+            let draw;
+            setTimeout(() => {
+                draw = isDraw();
+
+                if (draw) {
+                    if (confirm('The Game is Draw!\nStart new Game?')) {
+                        resetGame();
+                    }
                 }
-            }
-        }, 50);
+            }, 50);
+        }
+
     });
 });
 
@@ -136,6 +138,7 @@ function checkWinner() {
         if (pos1Value != '' && pos2Value != '' && pos3Value != '') {
             if (pos1Value === pos2Value && pos2Value === pos3Value) {
                 showWinner(pos1Value == 'O' ? player1 : player2);
+                return true;
             }
         }
     }

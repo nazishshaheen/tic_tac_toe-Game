@@ -25,6 +25,8 @@ let winningPattern = [
     [6, 7, 8]
 ]
 
+
+
 class Player {
     _score = 0;
     constructor(name) {
@@ -42,13 +44,21 @@ class Player {
     }
 }
 
-document.getElementById('script').addEventListener('load', playerStarter);
-
 let player1 = null;
 let player2 = null;
 
-function playerStarter() {
-    if (!player1 && !player2) {
+document.getElementById('script').addEventListener('load', () => {
+    if (confirm('Do you want to Set Player Name?\nClick OK else Cancel for Default')) {
+        playerStarter(false);
+    } else {
+        playerStarter(true);
+    }
+});
+
+
+
+function playerStarter(defName) {
+    if (!player1 && !player2 && !defName) {
         let name1 = prompt('Enter First Player Name :');
         let name2 = prompt('Enter Second Player Name :');
         if (isNaN(Number(name1)) && isNaN(Number(name2))) {
@@ -56,7 +66,7 @@ function playerStarter() {
             player2 = new Player(name2);
         } else {
             alert('Please Enter Player Name \nCarefully !');
-            playerStarter();
+            playerStarter(false);
         }
     }
     document.getElementById('player1').innerText = player1.fname;

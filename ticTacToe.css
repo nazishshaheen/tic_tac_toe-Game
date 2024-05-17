@@ -9,7 +9,8 @@ body {
     text-align: center;
     --disp1: none;
     --disp2: none;
-
+    --wd: 71px;
+    --clr: green;
 }
 
 .heading {
@@ -83,8 +84,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     height: 80px;
-    width: 40px;
-    background-color: green;
+    width: var(--wd);
+    background-color: var(--clr);
     animation: move 0.5s linear infinite;
     display: var(--disp1);
 
@@ -97,8 +98,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     height: 80px;
-    width: 40px;
-    background-color: green;
+    width: var(--wd);
+    background-color: var(--clr);
     animation: move 0.5s linear infinite;
     display: var(--disp2);
 }

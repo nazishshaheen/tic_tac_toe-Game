@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: rgb(50, 217, 161);
     text-align: center;
@@ -10,10 +11,12 @@ body {
     --disp2: none;
 
 }
-.heading{
+
+.heading {
     font-size: 45px;
     margin-top: 20px;
 }
+
 .game-container {
     height: 70vh;
     display: flex;
@@ -58,6 +61,7 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 50%;
+    margin: auto;
 }
 
 .player {
@@ -69,13 +73,15 @@ body {
     background-color: rgb(50, 217, 161);
     position: relative;
     z-index: 99;
+    margin: auto;
 }
-.outer1::after{
+
+.outer1::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
     height: 80px;
     width: 40px;
     background-color: green;
@@ -83,12 +89,13 @@ body {
     display: var(--disp1);
 
 }
-.outer2::after{
+
+.outer2::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
     height: 80px;
     width: 40px;
     background-color: green;
@@ -97,19 +104,23 @@ body {
 }
 
 @keyframes move {
-    100%{
-        transform: translate(-50%,-50%) rotate(225deg);
+    100% {
+        transform: translate(-50%, -50%) rotate(225deg);
     }
 }
+
 .player1 {
     color: rgb(158, 8, 8);
 }
-#player1{
+
+#player1 {
     font-size: 22px;
 }
-.outer-container p span{
+
+.outer-container p span {
     font-size: 20px;
 }
+
 .reset-button {
     height: 50px;
     margin-top: 10px;
@@ -119,16 +130,25 @@ body {
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    display: block;
 }
-.reset-button:hover{
+
+.reset-button:hover {
     font-size: 26px;
 }
+
+#mobile-reset-btn {
+    display: none;
+}
+
 .player2 {
     color: blue;
 }
-#player2{
+
+#player2 {
     font-size: 22px;
 }
+
 .new-button {
     padding: 10px;
     font-size: 20px;
@@ -137,9 +157,11 @@ body {
     border-radius: 10px;
     cursor: pointer;
 }
-.new-button:hover{
+
+.new-button:hover {
     font-size: 26px;
 }
+
 .msg-container {
     height: 80%;
 }
@@ -153,24 +175,40 @@ body {
     display: none;
 }
 
- /* media query */
- @media screen and (max-width:450px){
-    
-    .game-container{
+/* media query */
+@media screen and (max-width:450px) {
+
+    .game-container {
         height: 60%;
         margin-top: 20px;
     }
-    .game{
+
+    .game {
         width: 80%;
         height: 300px;
         gap: 8px;
     }
-    .box{
+
+    .box {
         height: 30%;
         width: 30%;
     }
-    .reset-container{
+    .outer-container{
+        width: 50%;
+        border: 1px solid red;
+    }
+    .reset-container {
         width: 80%;
         margin-top: 20px;
     }
- }
+
+    .reset-button {
+        display: none;
+    }
+
+    #mobile-reset-btn {
+        display: block;
+        width: 80%;
+        margin: 10px auto 2px;
+    }
+}

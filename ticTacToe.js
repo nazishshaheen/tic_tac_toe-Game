@@ -65,8 +65,11 @@ function playerStarter(defName) {
             player1 = new Player(name1);
             player2 = new Player(name2);
         } else {
-            alert('Please Enter Player Name \nCarefully !');
-            playerStarter(false);
+            if (confirm('Do you want to Set Player Name?\nClick OK else Cancel for Default')) {
+                playerStarter(false);
+            } else {
+                playerStarter(true);
+            }
         }
     }else{
         player1 = new Player('player_A');

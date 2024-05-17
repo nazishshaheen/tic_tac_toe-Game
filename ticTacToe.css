@@ -158,9 +158,11 @@ body {
     
     .game-container{
         height: 60%;
+        margin-top: 20px;
     }
     .game{
         width: 80%;
+        height: 300px;
         gap: 8px;
     }
     .box{

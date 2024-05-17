@@ -28,8 +28,10 @@ let winningPattern = [
 class Player {
     _score = 0;
     constructor(name) {
-        this.fname = name.split(' ')[0];
-        this.lname = name.split(' ')[1];
+        this.fname = name.split(' ')[0][0].toUpperCase()+name.split(' ')[0].substr(1);
+        if (name.includes(' ')) {
+            this.lname = name.split(' ')[1][0].toUpperCase()+name.split(' ')[1].substr(1);   
+        }
     }
 
     setScore = function () {
@@ -57,8 +59,8 @@ function playerStarter() {
             playerStarter();
         }
     }
-    document.getElementById('player1').innerText = player1.fname[0].toUpperCase()+player1.fname.substr(1);
-    document.getElementById('player2').innerText = player2.fname[0].toUpperCase()+player2.fname.substr(1);
+    document.getElementById('player1').innerText = player1.fname;
+    document.getElementById('player2').innerText = player2.fname;
     showScore();
 }
 
@@ -101,7 +103,7 @@ function enableButtons() {
 function showWinner(winnerObj) {
     winnerObj.setScore();
     showScore();
-    msg.innerText = `Congratulation, Winner is ${winnerObj.fname + " "+winnerObj.lname}`;
+    msg.innerText = `Congratulation, Winner is \n ${winnerObj.fname + " "+(winnerObj.lname??'')}`;
     msg.style.marginTop = '30px';
     msgContainer.classList.remove('hide');
     disabledButtons();

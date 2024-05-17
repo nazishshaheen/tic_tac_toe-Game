@@ -243,5 +243,11 @@ body {
     .outer-container p span{
         font-size: 16px;
     }
+    .outer-container p{
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
     
 }

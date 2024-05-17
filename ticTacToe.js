@@ -28,9 +28,9 @@ let winningPattern = [
 class Player {
     _score = 0;
     constructor(name) {
-        this.fname = name.split(' ')[0][0].toUpperCase()+name.split(' ')[0].substr(1);
+        this.fname = name.split(' ')[0][0].toUpperCase() + name.split(' ')[0].substr(1);
         if (name.includes(' ')) {
-            this.lname = name.split(' ')[1][0].toUpperCase()+name.split(' ')[1].substr(1);   
+            this.lname = name.split(' ')[1][0].toUpperCase() + name.split(' ')[1].substr(1);
         }
     }
 
@@ -54,7 +54,7 @@ function playerStarter() {
         if (isNaN(Number(name1)) && isNaN(Number(name2))) {
             player1 = new Player(name1);
             player2 = new Player(name2);
-        }else{
+        } else {
             alert('Please Enter Player Name \nCarefully !');
             playerStarter();
         }
@@ -81,6 +81,16 @@ boxes.forEach((box) => {
         box.disabled = true;
 
         checkWinner();
+        let draw;
+        setTimeout(() => {
+            draw = isDraw();
+    
+            if (draw) {
+                if (confirm('The Game is Draw!\nStart new Game?')) {
+                    resetGame();
+                }
+            }
+        }, 50);
     });
 });
 
@@ -103,7 +113,7 @@ function enableButtons() {
 function showWinner(winnerObj) {
     winnerObj.setScore();
     showScore();
-    msg.innerText = `Congratulation, Winner is \n ${winnerObj.fname + " "+(winnerObj.lname??'')}`;
+    msg.innerText = `Congratulation, Winner is \n ${winnerObj.fname + " " + (winnerObj.lname ?? '')}`;
     msg.style.marginTop = '30px';
     msgContainer.classList.remove('hide');
     disabledButtons();
@@ -118,8 +128,7 @@ function showWinner(winnerObj) {
 // function for checking winner
 function checkWinner() {
     for (let pattern of winningPattern) {
-        // console.log(pattern[0],pattern[1],pattern[2]);
-        // console.log(boxes[pattern[0]].innerText,boxes[pattern[1]].innerText,boxes[pattern[2]].innerText);
+
         let pos1Value = boxes[pattern[0]].innerText;
         let pos2Value = boxes[pattern[1]].innerText;
         let pos3Value = boxes[pattern[2]].innerText;
@@ -130,6 +139,7 @@ function checkWinner() {
             }
         }
     }
+
 }
 
 // function for reset game
@@ -149,8 +159,20 @@ function showScore() {
     document.getElementById('p2-score').innerText = player2.getScore();
 }
 
+function isDraw() {
+    for (let i = 0; i < boxes.length; i++) {
+        if (boxes[i].innerText === '') {
+            return false;
+        }
+        if (i > 7 && boxes[i].innerText != '') {
+            return true;
+        }
+    }
+
+}
+
 // add event listener on newGame button
 newGameBtn.addEventListener('click', resetGame);
 resetBtn.addEventListener('click', resetGame);
-mobileResetBtn.addEventListener('click',resetGame);
+mobileResetBtn.addEventListener('click', resetGame);
 

@@ -89,11 +89,14 @@ boxes.forEach((box) => {
         if (turnO) {
             box.innerText = 'O';
             turnO = false;
+            timer(4000);
             outer1.style.setProperty("--disp1", 'none');
             outer2.style.setProperty("--disp2", 'block');
+
         } else {
             box.innerText = 'X';
             turnO = true;
+            timer(4000);
             outer1.style.setProperty("--disp1", 'block');
             outer2.style.setProperty("--disp2", 'none');
         }
@@ -243,6 +246,42 @@ function isDraw() {
         }
     }
 
+}
+let interval = null;
+function timer(ms) {
+    if (interval) {
+        clearInterval(interval);
+        interval = null;
+        intervalFunc(ms);
+    } else {
+        intervalFunc(ms);
+    }
+
+}
+
+function intervalFunc(ms) {
+    let width = 71;
+    outer1.style.setProperty('--wd', `${width--}px`);
+    outer2.style.setProperty('--wd', `${width--}px`);
+    interval = setInterval(() => {
+        if (ms > 115) {
+            ms -= 110;
+            console.log(ms);
+            outer1.style.setProperty('--wd', `${width--}px`);
+            outer2.style.setProperty('--wd', `${width--}px`);
+            if (ms < 1000) {
+                outer1.style.setProperty('--clr', `red`);
+                outer2.style.setProperty('--clr', `red`);
+            } else {
+                outer1.style.setProperty('--clr', `green`);
+                outer2.style.setProperty('--clr', `green`);
+            }
+
+        } else {
+            ms = 4000;
+            width = 71;
+        }
+    }, 570);
 }
 
 // add event listener on newGame button

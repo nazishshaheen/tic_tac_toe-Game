@@ -67,7 +67,6 @@ body {
 
 .player {
     font-size: 40px;
-    padding: 10px;
     border-radius: 50%;
     height: 100%;
     width: 100%;
@@ -187,7 +186,7 @@ body {
     width: 30px;
     height: 30px;
     background-color: whitesmoke;
-    padding: 6px 2px;
+    padding: 1px 2px;
     margin-right: 5px;
     border-radius: 50%;
     box-shadow: 0px 0px 4px rgb(79, 79, 79);
@@ -195,7 +194,12 @@ body {
 .disp-ib{
     display: inline-block;
 }
-
+#close-btn{
+    color: red;
+    font-size: 22px;
+    background-color: inherit;
+    border: none;
+}
 /* media query */
 @media screen and (max-width:450px) {
 
@@ -236,6 +240,7 @@ body {
     .my-fa-trophy{
         width: 22px;
         height: 22px;
+        padding: 2px 1px;
         font-size: 12px !important;
     }
     #player1,#player2{

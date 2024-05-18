@@ -10,6 +10,9 @@ let outer1 = document.querySelector('.outer1');
 let outer2 = document.querySelector('.outer2');
 let trophy1 = document.getElementById('trophy1');
 let trophy2 = document.getElementById('trophy2');
+let nameCnfModel = document.getElementById('exampleModalCenter');
+let nameSetModal = document.getElementById('setModalCenter');
+let saveBtn = document.getElementById('save-btn');
 
 // player O
 let turnO = true;
@@ -50,33 +53,56 @@ class Player {
 let player1 = null;
 let player2 = null;
 
-document.getElementById('script').addEventListener('load', () => {
-    if (confirm('Do you want to Set Player Name?\nclick Cancel for Default Name')) {
-        playerStarter(false);
+// setting confirm buttons
+document.getElementById('close-btn').addEventListener('click', () => {
+    hideModel(nameCnfModel);
+    playerStarter(true);
+});
+
+document.getElementById('cnfrm-cancel-btn').addEventListener('click', () => {
+    hideModel(nameCnfModel);
+    playerStarter(true);
+});
+
+document.getElementById('name-set-btn').addEventListener('click', () => {
+    hideModel(nameCnfModel);
+    showModel(nameSetModal);
+});
+
+// setting name buttons 
+document.getElementById('name-close-btn').addEventListener('click', () => {
+    hideModel(nameSetModal);
+    playerStarter(true);
+});
+
+document.getElementById('set-cancel-btn').addEventListener('click', () => {
+    hideModel(nameSetModal);
+    playerStarter(true);
+});
+document.getElementById('save-btn').addEventListener('click', () => {
+    let name1 = document.getElementById('playerName1').value;
+    let name2 = document.getElementById('playerName2').value;
+    if (name1 && name2) {
+        if (isNaN(Number(name1)) && isNaN(Number(name2))) {
+            hideModel(nameSetModal);
+            playerStarter(false, name1, name2);
+        } else {
+            alert('Set Proper Name!');
+        }
     } else {
-        playerStarter(true);
+        alert('Enter Name Plzz');
     }
+
 });
 
 
-
-function playerStarter(defName) {
+function playerStarter(defName, name1, name2) {
     if (!player1 && !player2 && !defName) {
-        let name1 = prompt('Enter First Player Name :');
-        let name2 = prompt('Enter Second Player Name :');
-        if (isNaN(Number(name1)) && isNaN(Number(name2))) {
-            player1 = new Player(name1);
-            player2 = new Player(name2);
-        } else {
-            if (confirm('Do you want to Set Player Name?\nclick Cancel for Default Name')) {
-                playerStarter(false);
-            } else {
-                playerStarter(true);
-            }
-        }
+        player1 = new Player(name1);
+        player2 = new Player(name2);
     } else {
         player1 = new Player('player_A');
-        player2 = new Player('Player_B')
+        player2 = new Player('Player_B');
     }
     document.getElementById('player1').innerText = player1.fname;
     document.getElementById('player2').innerText = player2.fname;
@@ -286,6 +312,18 @@ function intervalFunc(ms) {
         }
     }, 570);
 }
+setTimeout(() => {
+    showModel(nameCnfModel);
+}, 300);
+function showModel(model) {
+    model.classList.add('show');
+    model.style.display = 'block';
+}
+
+function hideModel(model) {
+    model.style.display = 'none';
+}
+
 
 // add event listener on newGame button
 newGameBtn.addEventListener('click', resetGame);

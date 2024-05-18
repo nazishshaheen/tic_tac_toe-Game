@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="ticTacToe.css">
     <script src="https://kit.fontawesome.com/3fef92542b.js" crossorigin="anonymous"></script>
+    <title>Tic Tac Toe</title>
 </head>
 
 <body>
@@ -33,17 +35,43 @@
             <div class="outer outer1">
                 <div class="player1 player"><i class="fa-solid fa-user"></i></div>
             </div>
-            <p><span class="my-fa-trophy" id="trophy1"><i class="fa-solid fa-trophy"></i></span><span id="player1"> Player 1</span> : <span id="p1-score"></span></p>
+            <p><span class="my-fa-trophy" id="trophy1"><i class="fa-solid fa-trophy"></i></span><span id="player1">
+                    Player 1</span> : <span id="p1-score"></span></p>
         </div>
         <button class="reset-button">Reset</button>
         <div class="outer-container">
             <div class="outer outer2">
                 <div class="player2 player"><i class="fa-solid fa-user"></i></div>
             </div>
-            <p><span class="my-fa-trophy" id="trophy2"><i class="fa-solid fa-trophy"></i></span><span id="player2"> Player 2</span> : <span id="p2-score"></span></p>
+            <p><span class="my-fa-trophy" id="trophy2"><i class="fa-solid fa-trophy"></i></span><span id="player2">
+                    Player 2</span> : <span id="p2-score"></span></p>
         </div>
     </div>
     <button class="reset-button mobile-reset-btn disp-responsive" id="mobile-reset-btn">Reset</button>
+
+    <!-- code for confirm model -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Do you want to Set Player Name?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-btn">
+                        <span aria-hidden="true">X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    click Close or Cancel for setting Default Name
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="name-cancel-btn">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="name-set-btn">Set Name</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="ticTacToe.js" id="script"></script>
 </body>
 

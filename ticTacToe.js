@@ -314,7 +314,7 @@ function intervalFunc(ms) {
 }
 setTimeout(() => {
     showModel(nameCnfModel);
-}, 300);
+}, 500);
 function showModel(model) {
     model.classList.add('show');
     model.style.display = 'block';

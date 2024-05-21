@@ -295,7 +295,6 @@ function intervalFunc(ms) {
     interval = setInterval(() => {
         if (ms > 57) {
             ms -= 57;
-            console.log(ms);
             outer1.style.setProperty('--wd', `${width--}px`);
             outer2.style.setProperty('--wd', `${width--}px`);
             if (ms < 700) {

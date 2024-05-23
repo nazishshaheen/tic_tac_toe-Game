@@ -126,18 +126,22 @@ body {
 
 .reset-button {
     height: 50px;
+    width: 90px;
     margin-top: 10px;
-    padding: 10px;
+    padding: 5px;
     font-size: 22px;
+    text-align: center;
     background-color: rgb(56, 54, 54);
     color: white;
     border-radius: 10px;
     cursor: pointer;
     display: block;
+    transition: all ease 0.5s;
 }
 
 .reset-button:hover {
     font-size: 26px;
+    box-shadow: 5px 5px 0px white;
 }
 .mobile-reset-btn{
     display: none;

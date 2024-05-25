@@ -141,7 +141,6 @@ body {
 
 .reset-button:hover {
     font-size: 26px;
-    box-shadow: 5px 5px 0px white;
 }
 .mobile-reset-btn{
     display: none;
